@@ -1,0 +1,26 @@
+{# @var craft \craft\web\twig\variables\CraftVariable #}
+{#
+/**
+ * feedback-form plugin for Craft CMS 3.x
+ *
+ * feedback-form Settings.twig
+ *
+ * @author    meBooks
+ * @copyright Copyright (c) 2018 meBooks
+ * @link      https://mebooks.co.nz
+ * @package   Feedbackform
+ * @since     1.0.0
+ */
+#}
+
+{% import "_includes/forms" as forms %}
+
+{% do view.registerAssetBundle("nzmebooks\\feedbackform\\assetbundles\\feedbackform\\FeedbackformAsset") %}
+
+{{ forms.textField({
+    label: 'Some Field',
+    instructions: 'Enter some setting here.',
+    id: 'someAttribute',
+    name: 'someAttribute',
+    value: settings['someAttribute']})
+}}

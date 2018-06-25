@@ -1,0 +1,43 @@
+{
+    "name": "nzmebooks/craft-feedback-form",
+    "description": "Allow the user to submit feedback to be sent to a list of email addresses configured in the plugin",
+    "type": "craft-plugin",
+    "version": "1.0.0",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "feedback-form"
+    ],
+    "support": {
+        "docs": "https://github.com/nzmebooks/craft-feedback-form/blob/master/README.md",
+        "issues": "https://github.com/nzmebooks/craft-feedback-form/issues"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "meBooks",
+            "homepage": "https://mebooks.co.nz"
+        }
+    ],
+    "require": {
+        "craftcms/cms": "^3.0.0-RC1"
+    },
+    "autoload": {
+        "psr-4": {
+          "nzmebooks\\feedbackform\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "Feedback Form",
+        "handle": "feedback-form",
+        "hasCpSettings": true,
+        "hasCpSection": false,
+        "changelogUrl": "https://raw.githubusercontent.com/nzmebooks/craft-feedback-form/master/CHANGELOG.md",
+        "components": {
+            "feedbackFormService": "nzmebooks\\feedbackform\\services\\FeedbackFormService"
+        },
+        "class": "nzmebooks\\feedbackform\\FeedbackForm"
+    }
+}
