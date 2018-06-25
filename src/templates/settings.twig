@@ -15,12 +15,79 @@
 
 {% import "_includes/forms" as forms %}
 
-{% do view.registerAssetBundle("nzmebooks\\feedbackform\\assetbundles\\feedbackform\\FeedbackformAsset") %}
+{% macro configWarning(setting) -%}
+    {{ "This is being overridden by the {setting} config setting in your feedbackform.php config file."|t({
+        setting: setting
+    })|raw }}
+{%- endmacro %}
+
+{% from _self import configWarning %}
 
 {{ forms.textField({
-    label: 'Some Field',
-    instructions: 'Enter some setting here.',
-    id: 'someAttribute',
-    name: 'someAttribute',
-    value: settings['someAttribute']})
-}}
+    label:        'Modal Text'|t,
+    id:           'modalText',
+    name:         'modalText',
+    instructions: 'Text that will displayed in the modal to the user.'|t,
+    value:        (settings.modalText ? settings.modalText : ""),
+    disabled:     (craft.config.get('modalText', 'feedbackform') is not sameas(null)),
+    warning:      (craft.config.get('modalText', 'feedbackform') is not sameas(null)) ? configWarning('modalText'),
+    errors:       settings.getErrors('modalText')
+}) }}
+
+{{ forms.textField({
+    first:        true,
+    label:        'To Email'|t,
+    required:     true,
+    id:           'toEmail',
+    name:         'toEmail',
+    instructions: 'The email address(es) that the contact form will send to. Separate multiple email addresses with commas.'|t,
+    value:        settings.toEmail,
+    autofocus:    true,
+    disabled:     (craft.config.get('toEmail', 'feedbackform') is not sameas(null)),
+    warning:      (craft.config.get('toEmail', 'feedbackform') is not sameas(null)) ? configWarning('toEmail'),
+    errors:       settings.getErrors('toEmail')
+}) }}
+
+{{ forms.textField({
+    label:        'Sender Text'|t,
+    id:           'prependSender',
+    name:         'prependSender',
+    instructions: 'Text that will be prepended to the email’s From Name to inform who the Feedback Form actually was sent by.'|t,
+    value:        (settings.prependSender ? settings.prependSender : ""),
+    disabled:     (craft.config.get('prependSender', 'feedbackform') is not sameas(null)),
+    warning:      (craft.config.get('prependSender', 'feedbackform') is not sameas(null)) ? configWarning('prependSender'),
+    errors:       settings.getErrors('prependSender')
+}) }}
+
+{{ forms.textField({
+    label:        'Subject Text'|t,
+    id:           'prependSubject',
+    name:         'prependSubject',
+    instructions: 'Text that will be prepended to the email’s Subject to flag that it comes from the Feedback Form.'|t,
+    value:        (settings.prependSubject ? settings.prependSubject : ""),
+    disabled:     (craft.config.get('prependSubject', 'feedbackform') is not sameas(null)),
+    warning:      (craft.config.get('prependSubject', 'feedbackform') is not sameas(null)) ? configWarning('prependSubject'),
+    errors:       settings.getErrors('prependSubject')
+}) }}
+
+{{ forms.textField({
+    label:        'Honeypot Field'|t,
+    id:           'honeypotField',
+    name:         'honeypotField',
+    instructions: 'The name of the "honeypot" field in your Feedback Form.'|t,
+    value:        settings.honeypotField,
+    disabled:     (craft.config.get('honeypotField', 'feedbackform') is not sameas(null)),
+    warning:      (craft.config.get('honeypotField', 'feedbackform') is not sameas(null)) ? configWarning('honeypotField'),
+    errors:       settings.getErrors('honeypotField')
+}) }}
+
+{{ forms.textField({
+    label:        'Success Flash Message'|t,
+    id:           'successFlashMessage',
+    name:         'successFlashMessage',
+    instructions: 'The flash message displayed after successfully sending a message.'|t,
+    value:        settings.successFlashMessage,
+    disabled:     (craft.config.get('successFlashMessage', 'feedbackform') is not sameas(null)),
+    warning:      (craft.config.get('successFlashMessage', 'feedbackform') is not sameas(null)) ? configWarning('successFlashMessage'),
+    errors:       settings.getErrors('successFlashMessage')
+}) }}

@@ -10,7 +10,7 @@
 
 namespace nzmebooks\feedbackform\models;
 
-use nzmebooks\feedbackform\Feedbackform;
+use nzmebooks\feedbackform\FeedbackForm;
 
 use Craft;
 use craft\base\Model;
@@ -28,7 +28,7 @@ class FeedbackFormModel extends Model
     /**
      * @var string
      */
-    public $someAttribute = 'Some Default';
+    public $feedback;
 
     // Public Methods
     // =========================================================================
@@ -39,8 +39,7 @@ class FeedbackFormModel extends Model
     public function rules()
     {
         return [
-            ['someAttribute', 'string'],
-            ['someAttribute', 'default', 'value' => 'Some Default'],
+            ['feedback', 'string'],
         ];
     }
 }

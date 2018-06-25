@@ -10,7 +10,7 @@
 
 namespace nzmebooks\feedbackform\models;
 
-use nzmebooks\feedbackform\Feedbackform;
+use nzmebooks\feedbackform\FeedbackForm;
 
 use Craft;
 use craft\base\Model;
@@ -28,7 +28,32 @@ class Settings extends Model
     /**
      * @var string
      */
-    public $someAttribute = 'Some Default';
+    public $modalText = 'We\re keen to hear any feedback you might have about our site';
+
+    /**
+     * @var string
+     */
+    public $toEmail;
+
+    /**
+     * @var string
+     */
+    public $prependSender = 'On behalf of';
+
+    /**
+     * @var string
+     */
+    public $prependSubject = 'New feedback';
+
+    /**
+     * @var string
+     */
+    public $honeypotField = 'name';
+
+    /**
+     * @var string
+     */
+    public $successFlashMessage = 'Your feedback has been sent.';
 
     // Public Methods
     // =========================================================================
@@ -39,8 +64,7 @@ class Settings extends Model
     public function rules()
     {
         return [
-            ['someAttribute', 'string'],
-            ['someAttribute', 'default', 'value' => 'Some Default'],
+            [['toEmail', 'successFlashMessage'], 'required'],
         ];
     }
 }

@@ -10,8 +10,8 @@
 
 namespace nzmebooks\feedbackform;
 
-use nzmebooks\feedbackform\services\FeedbackFormService as FeedbackFormServiceService;
-use nzmebooks\feedbackform\variables\FeedbackformVariable;
+use nzmebooks\feedbackform\services\FeedbackFormService;
+use nzmebooks\feedbackform\variables\FeedbackFormVariable;
 use nzmebooks\feedbackform\models\Settings;
 
 use Craft;
@@ -31,15 +31,15 @@ use yii\base\Event;
  * @package   Feedbackform
  * @since     1.0.0
  *
- * @property  FeedbackFormServiceService $feedbackFormService
+ * @property  FeedbackFormService $feedbackFormService
  */
-class Feedbackform extends Plugin
+class FeedbackForm extends Plugin
 {
     // Static Properties
     // =========================================================================
 
     /**
-     * @var Feedbackform
+     * @var FeedbackForm
      */
     public static $plugin;
 
@@ -61,6 +61,11 @@ class Feedbackform extends Plugin
     {
         parent::init();
         self::$plugin = $this;
+
+        // Register Components (Services)
+        $this->setComponents([
+            'feedbackformService' => FeedbackFormService::class,
+        ]);
 
         Event::on(
             UrlManager::class,
@@ -84,7 +89,7 @@ class Feedbackform extends Plugin
             function (Event $event) {
                 /** @var CraftVariable $variable */
                 $variable = $event->sender;
-                $variable->set('feedbackform', FeedbackformVariable::class);
+                $variable->set('feedbackform', FeedbackFormVariable::class);
             }
         );
 
@@ -105,6 +110,11 @@ class Feedbackform extends Plugin
             ),
             __METHOD__
         );
+    }
+
+    public function getName()
+    {
+        return $this->name;
     }
 
     // Protected Methods

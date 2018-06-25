@@ -10,7 +10,7 @@
 
 namespace nzmebooks\feedbackform\variables;
 
-use nzmebooks\feedbackform\Feedbackform;
+use nzmebooks\feedbackform\FeedbackForm;
 
 use Craft;
 
@@ -19,21 +19,24 @@ use Craft;
  * @package   Feedbackform
  * @since     1.0.0
  */
-class FeedbackformVariable
+class FeedbackFormVariable
 {
     // Public Methods
     // =========================================================================
 
     /**
-     * @param null $optional
      * @return string
      */
-    public function exampleVariable($optional = null)
+    public function getSettings()
     {
-        $result = "And away we go to the Twig template...";
-        if ($optional) {
-            $result = "I'm feeling optional today...";
-        }
-        return $result;
+        return FeedbackForm::$plugin->getSettings();
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return FeedbackForm::$plugin->getName();
     }
 }
