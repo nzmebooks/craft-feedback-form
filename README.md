@@ -1,4 +1,4 @@
-# feedback-form plugin for Craft CMS 3.x
+# craft-feedback-form plugin for Craft CMS 3.x
 
 Allow the user to submit feedback to be sent to a list of email addresses configured in the plugin
 
@@ -33,11 +33,5 @@ To install the plugin, follow these instructions.
 ## Using feedback-form
 
 -Insert text here-
-
-## feedback-form Roadmap
-
-Some things to do, and ideas for potential features:
-
-* Release it
 
 Brought to you by [meBooks](https://mebooks.co.nz)
