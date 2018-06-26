@@ -29,8 +29,8 @@
     name:         'modalText',
     instructions: 'Text that will displayed in the modal to the user.'|t,
     value:        (settings.modalText ? settings.modalText : ""),
-    disabled:     (craft.config.get('modalText', 'feedbackform') is not sameas(null)),
-    warning:      (craft.config.get('modalText', 'feedbackform') is not sameas(null)) ? configWarning('modalText'),
+    disabled:     (craft.config.get('modalText', 'feedbackform') is not same as(null)),
+    warning:      (craft.config.get('modalText', 'feedbackform') is not same as(null)) ? configWarning('modalText'),
     errors:       settings.getErrors('modalText')
 }) }}
 
@@ -43,8 +43,8 @@
     instructions: 'The email address(es) that the contact form will send to. Separate multiple email addresses with commas.'|t,
     value:        settings.toEmail,
     autofocus:    true,
-    disabled:     (craft.config.get('toEmail', 'feedbackform') is not sameas(null)),
-    warning:      (craft.config.get('toEmail', 'feedbackform') is not sameas(null)) ? configWarning('toEmail'),
+    disabled:     (craft.config.get('toEmail', 'feedbackform') is not same as(null)),
+    warning:      (craft.config.get('toEmail', 'feedbackform') is not same as(null)) ? configWarning('toEmail'),
     errors:       settings.getErrors('toEmail')
 }) }}
 
@@ -54,8 +54,8 @@
     name:         'prependSender',
     instructions: 'Text that will be prepended to the email’s From Name to inform who the Feedback Form actually was sent by.'|t,
     value:        (settings.prependSender ? settings.prependSender : ""),
-    disabled:     (craft.config.get('prependSender', 'feedbackform') is not sameas(null)),
-    warning:      (craft.config.get('prependSender', 'feedbackform') is not sameas(null)) ? configWarning('prependSender'),
+    disabled:     (craft.config.get('prependSender', 'feedbackform') is not same as(null)),
+    warning:      (craft.config.get('prependSender', 'feedbackform') is not same as(null)) ? configWarning('prependSender'),
     errors:       settings.getErrors('prependSender')
 }) }}
 
@@ -65,8 +65,8 @@
     name:         'prependSubject',
     instructions: 'Text that will be prepended to the email’s Subject to flag that it comes from the Feedback Form.'|t,
     value:        (settings.prependSubject ? settings.prependSubject : ""),
-    disabled:     (craft.config.get('prependSubject', 'feedbackform') is not sameas(null)),
-    warning:      (craft.config.get('prependSubject', 'feedbackform') is not sameas(null)) ? configWarning('prependSubject'),
+    disabled:     (craft.config.get('prependSubject', 'feedbackform') is not same as(null)),
+    warning:      (craft.config.get('prependSubject', 'feedbackform') is not same as(null)) ? configWarning('prependSubject'),
     errors:       settings.getErrors('prependSubject')
 }) }}
 
@@ -76,8 +76,8 @@
     name:         'honeypotField',
     instructions: 'The name of the "honeypot" field in your Feedback Form.'|t,
     value:        settings.honeypotField,
-    disabled:     (craft.config.get('honeypotField', 'feedbackform') is not sameas(null)),
-    warning:      (craft.config.get('honeypotField', 'feedbackform') is not sameas(null)) ? configWarning('honeypotField'),
+    disabled:     (craft.config.get('honeypotField', 'feedbackform') is not same as(null)),
+    warning:      (craft.config.get('honeypotField', 'feedbackform') is not same as(null)) ? configWarning('honeypotField'),
     errors:       settings.getErrors('honeypotField')
 }) }}
 
@@ -87,7 +87,7 @@
     name:         'successFlashMessage',
     instructions: 'The flash message displayed after successfully sending a message.'|t,
     value:        settings.successFlashMessage,
-    disabled:     (craft.config.get('successFlashMessage', 'feedbackform') is not sameas(null)),
-    warning:      (craft.config.get('successFlashMessage', 'feedbackform') is not sameas(null)) ? configWarning('successFlashMessage'),
+    disabled:     (craft.config.get('successFlashMessage', 'feedbackform') is not same as(null)),
+    warning:      (craft.config.get('successFlashMessage', 'feedbackform') is not same as(null)) ? configWarning('successFlashMessage'),
     errors:       settings.getErrors('successFlashMessage')
 }) }}

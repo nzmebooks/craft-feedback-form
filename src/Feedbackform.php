@@ -10,7 +10,7 @@
 
 namespace nzmebooks\feedbackform;
 
-use nzmebooks\feedbackform\services\FeedbackFormService;
+use nzmebooks\feedbackform\services\SendMessageService;
 use nzmebooks\feedbackform\variables\FeedbackFormVariable;
 use nzmebooks\feedbackform\models\Settings;
 
@@ -64,25 +64,10 @@ class FeedbackForm extends Plugin
 
         // Register Components (Services)
         $this->setComponents([
-            'feedbackformService' => FeedbackFormService::class,
+            'sendMessageService' => SendMessageService::class,
         ]);
 
-        Event::on(
-            UrlManager::class,
-            UrlManager::EVENT_REGISTER_SITE_URL_RULES,
-            function (RegisterUrlRulesEvent $event) {
-                $event->rules['siteActionTrigger1'] = 'feedback-form/feedback-form-controller';
-            }
-        );
-
-        Event::on(
-            UrlManager::class,
-            UrlManager::EVENT_REGISTER_CP_URL_RULES,
-            function (RegisterUrlRulesEvent $event) {
-                $event->rules['cpActionTrigger1'] = 'feedback-form/feedback-form-controller/do-something';
-            }
-        );
-
+        // Register our variables
         Event::on(
             CraftVariable::class,
             CraftVariable::EVENT_INIT,
@@ -91,24 +76,6 @@ class FeedbackForm extends Plugin
                 $variable = $event->sender;
                 $variable->set('feedbackform', FeedbackFormVariable::class);
             }
-        );
-
-        Event::on(
-            Plugins::class,
-            Plugins::EVENT_AFTER_INSTALL_PLUGIN,
-            function (PluginEvent $event) {
-                if ($event->plugin === $this) {
-                }
-            }
-        );
-
-        Craft::info(
-            Craft::t(
-                'feedback-form',
-                '{name} plugin loaded',
-                ['name' => $this->name]
-            ),
-            __METHOD__
         );
     }
 

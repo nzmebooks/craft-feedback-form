@@ -18,12 +18,14 @@ use craft\base\Component;
 use craft\helpers\ArrayHelper;
 use craft\mail\Message;
 
+use yii\helpers\HtmlPurifier;
+
 /**
  * @author    meBooks
  * @package   Feedbackform
  * @since     1.0.0
  */
-class FeedbackFormService extends Component
+class SendMessageService extends Component
 {
     // Public Methods
     // =========================================================================
@@ -56,7 +58,7 @@ class FeedbackFormService extends Component
             $email->setFrom([$emailSettings['fromEmail'] => $emailSettings['fromName']]);
             $email->setTo($toEmail);
 
-            $user = Craft::$app->getUser();
+            $user = Craft::$app->getUser()->getIdentity();
 
             if ($user) {
                 $subject = $settings->prependSubject . ' -- from: ' . $user->firstName . ' ' . $user->lastName . ' (' . $user->email . ')';
@@ -68,8 +70,7 @@ class FeedbackFormService extends Component
 
             // HTML is fine, but scripts are not.
             // http://craftcms.stackexchange.com/a/776
-            $purifier = new \CHtmlPurifier();
-            $purified = $purifier->purify($message->feedback);
+            $purified = HtmlPurifier::process($message->feedback);
 
             $email->setHtmlBody($purified);
 

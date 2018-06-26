@@ -35,9 +35,6 @@
         "hasCpSettings": true,
         "hasCpSection": false,
         "changelogUrl": "https://raw.githubusercontent.com/nzmebooks/craft-feedback-form/master/CHANGELOG.md",
-        "components": {
-            "feedbackFormService": "nzmebooks\\feedbackform\\services\\FeedbackFormService"
-        },
         "class": "nzmebooks\\feedbackform\\FeedbackForm"
     }
 }

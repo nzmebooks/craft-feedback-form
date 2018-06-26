@@ -22,16 +22,46 @@ To install the plugin, follow these instructions.
 
 3. In the Control Panel, go to Settings → Plugins and click the “Install” button for feedback-form.
 
-## feedback-form Overview
-
--Insert text here-
-
 ## Configuring feedback-form
 
--Insert text here-
+You'll want to check the settings to configure:
+
+* **Modal Text**: text that will displayed in the modal to the user
+(e.g. 'any feedback you can give helps us focus on what you need.')
+
+* **To Email**: The email address(es) that the contact form will send to. Separate multiple email addresses with commas.
+
+* **Sender Text**: Text that will be prepended to the email’s From Name to inform who the Feedback Form actually was sent by.
+(e.g. 'On behalf of')
+
+* **Subject Text**: Text that will be prepended to the email’s Subject to flag that it comes from the Feedback Form.
+(e.g. 'New feedback')
+
+* **Honeypot Field**: The name of the "honeypot" field in your Feedback Form.
+(e.g. 'name')
+
+* **Success Flash Message**: The flash message displayed after successfully sending a message.
+(e.g. 'Your feedback has been sent!')
 
 ## Using feedback-form
 
--Insert text here-
+You'll need a form that looks somewhat like the following:
+
+    <form id="feedback-form" class="feedback-form" action="" method="POST" data-abide="ajax">
+        {{ csrfInput() }}
+        <input type="hidden" name="action" value="feedback-form/send-message">
+
+        {# Our honeypot field #}
+        <input type="input" name="name" style="border: none;">
+
+        <div class="field-line">
+            <label class="modal__label">Comments
+                <textarea class="modal__message" name="feedback" rows="5" required ></textarea>
+            </label>
+        </div>
+
+        <input class="modal__button button radius" type="submit" name="submit" value="Send Feedback"/>
+
+    </form>
 
 Brought to you by [meBooks](https://mebooks.co.nz)
