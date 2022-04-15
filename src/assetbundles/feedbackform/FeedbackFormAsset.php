@@ -8,7 +8,7 @@
  * @copyright Copyright (c) 2018 meBooks
  */
 
-namespace nzmebooks\feedbackform\assetbundles\Feedbackform;
+namespace nzmebooks\feedbackform\assetbundles\feedbackform;
 
 use Craft;
 use craft\web\AssetBundle;
@@ -19,7 +19,7 @@ use craft\web\assets\cp\CpAsset;
  * @package   Feedbackform
  * @since     1.0.0
  */
-class FeedbackformAsset extends AssetBundle
+class FeedbackFormAsset extends AssetBundle
 {
     // Public Methods
     // =========================================================================
