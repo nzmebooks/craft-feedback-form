@@ -36,7 +36,7 @@ class FeedbackFormModel extends Model
     /**
      * @inheritdoc
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             ['feedback', 'string'],
