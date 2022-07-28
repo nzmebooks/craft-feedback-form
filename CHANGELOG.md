@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 2.0.1 - 2022-07-28
+### Fixed
+- Under Craft 4 we use `Craft::$app->getProjectConfig()->get('email')` instead of `Craft::$app->getSystemSettings()->getEmailSettings()`
+
 ## 2.0.0 - 2022-05-28
 ### Modified
 - Upgrade to Craft 4
